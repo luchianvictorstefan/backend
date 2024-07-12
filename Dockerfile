@@ -1,15 +1,15 @@
 # Base image for Node.js
 FROM node:22-alpine AS base
-# Install pnpm globally
-RUN npm i -g pnpm typescript tsc-alias
+# Install yarn globally
+RUN npm install -g yarn typescript tsc-alias
 
 # Dependencies stage
 FROM base AS dependencies
 WORKDIR /app
-# Copy package.json and pnpm-lock.yaml
-COPY package.json pnpm-lock.yaml ./
+# Copy package.json and yarn.lock
+COPY package.json yarn.lock ./
 # Install dependencies
-RUN pnpm install
+RUN yarn install
 
 # Build stage
 FROM base AS build
@@ -18,10 +18,8 @@ WORKDIR /app
 COPY . .
 # Copy dependencies from the dependencies stage
 COPY --from=dependencies /app/node_modules ./node_modules
-# Build the application using pnpm
-RUN tsc && tsc-alias
-# Prune development dependencies
-RUN pnpm prune --prod
+# Build the application using yarn
+RUN yarn build
 
 # Deployment stage
 FROM base AS deploy
