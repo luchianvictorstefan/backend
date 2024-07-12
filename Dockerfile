@@ -1,27 +1,29 @@
 FROM node:20-slim AS base
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+# Enable Corepack
 RUN corepack enable
 COPY . /app
 WORKDIR /app
 
-FROM base AS prod-deps
+# Create a new image for production dependencies
+FROM base as prod-deps
+# Install production dependencies
+# use a cache if available
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
+# Create build image for building the TypeScript code
 FROM base AS build
+# Install build dependencies
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+# Build the TypeScript
 RUN pnpm run build
 
-
-FROM gcr.io/distroless/nodejs20-debian11
-
+# Create an image base
+FROM base
+# Copy production dependencies from the prod-deps stage
 COPY --from=prod-deps /app/node_modules /app/node_modules
+# Copy the compiled TypeScript code from the build stage
 COPY --from=build /app/dist /app/dist
-COPY --from=build /app/package.json /app/package.json
-
-WORKDIR /app
-
-ENV PORT=5000
+# Expose incoming connections
 EXPOSE 5000
-
-CMD [ "dist/index.js"]
+# Start PNPM script
+CMD [ "pnpm", "start" ]
