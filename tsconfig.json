@@ -1,27 +1,19 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
+    "module": "CommonJS",
+    "outDir": "dist/",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "outDir": "./dist",
-    "paths": {
-      "@/*": ["./src/*"],
-      "$/*": ["./*"]
-    }
+    "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules",
-  ],
-  "include": [
-    "src/**/*.ts",
-  ],
-  "tsc-alias": {
-    "resolveFullPaths": true,
-    "verbose": false
-  }
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "files": true,
+    "swc": true,
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/*.ts", "src/*.ts"]
 }
