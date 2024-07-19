@@ -6,6 +6,7 @@ import { migrate } from "drizzle-orm/node-postgres/migrator";
 
 export const connection = new Pool({
   connectionString: env.DATABASE_URL,
+  max: (env.DB_SEEDING || env.DB_MIGRATING) ? 1 : 10,
 });
 
 export const db = drizzle(connection, {

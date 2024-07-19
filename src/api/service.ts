@@ -2,7 +2,7 @@ import db from "../db/index";
 
 export const ApiService = {
   getStatesQuery() {
-    return db.query.state.findMany();
+    return db.query.gigConsumers.findMany();
   },
 };
 

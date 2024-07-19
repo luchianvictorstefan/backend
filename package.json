@@ -6,10 +6,11 @@
   "scripts": {
     "start": "node dist/app.js",
     "build": "tsc",
-    "dev": "ts-node src/app.ts",
+    "dev": "nodemon src/app.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:seed": "cross-env DB_SEEDING=true ts-node src/db/seed.ts"
+    "db:seed": "cross-env DB_SEEDING=true ts-node src/db/seed.ts",
+    "dbml:generate": "npx tsx dbml.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,9 @@
   "devDependencies": {
     "@types/pg": "^8.11.6",
     "cross-env": "^7.0.3",
-    "drizzle-kit": "^0.21.2",
+    "nodemon": "^3.1.4",
+    "drizzle-dbml-generator": "^0.7.0",
+    "drizzle-kit": "0.22.3",
     "typescript": "^5.5.3"
   },
   "dependencies": {
@@ -25,7 +28,7 @@
     "@types/node": "^20.14.10",
     "dotenv": "^16.4.5",
     "dotenv-expand": "^11.0.6",
-    "drizzle-orm": "^0.30.10",
+    "drizzle-orm": "^0.32.0",
     "drizzle-zod": "^0.5.1",
     "express": "^4.19.2",
     "pg": "^8.12.0",

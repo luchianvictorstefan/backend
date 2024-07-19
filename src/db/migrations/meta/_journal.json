@@ -1,19 +1,26 @@
 {
-  "version": "6",
+  "version": "7",
   "dialect": "postgresql",
   "entries": [
     {
       "idx": 0,
-      "version": "6",
-      "when": 1720801267777,
-      "tag": "0000_nappy_mulholland_black",
+      "version": "7",
+      "when": 1721414499033,
+      "tag": "0000_sleepy_weapon_omega",
       "breakpoints": true
     },
     {
       "idx": 1,
-      "version": "6",
-      "when": 1720801490061,
-      "tag": "0001_sad_the_enforcers",
+      "version": "7",
+      "when": 1721414691783,
+      "tag": "0001_jittery_nightshade",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1721415982364,
+      "tag": "0002_typical_catseye",
       "breakpoints": true
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "id": "b30eaa02-d702-4817-a900-01804f4ac19a",
-  "prevId": "6ffed74b-a7af-4c59-9778-14ea81b0a1bf",
+  "id": "b139b57e-44d1-425f-a3f6-6fe252ce634d",
+  "prevId": "b30eaa02-d702-4817-a900-01804f4ac19a",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -45,10 +45,10 @@
       "uniqueConstraints": {
         "gig_consumer_user_id_idx": {
           "name": "gig_consumer_user_id_idx",
+          "nullsNotDistinct": false,
           "columns": [
             "user_id"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       }
     },
@@ -87,10 +87,10 @@
       "uniqueConstraints": {
         "gig_provider_user_id_idx": {
           "name": "gig_provider_user_id_idx",
+          "nullsNotDistinct": false,
           "columns": [
             "user_id"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       }
     },
@@ -153,33 +153,26 @@
         "provider_services_provider_id_gig_providers_id_fk": {
           "name": "provider_services_provider_id_gig_providers_id_fk",
           "tableFrom": "provider_services",
+          "tableTo": "gig_providers",
           "columnsFrom": [
             "provider_id"
           ],
-          "tableTo": "gig_providers",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "provider_id_idx": {
-          "name": "provider_id_idx",
-          "columns": [
-            "provider_id"
-          ],
-          "nullsNotDistinct": false
-        },
         "provider_services_idx": {
           "name": "provider_services_idx",
+          "nullsNotDistinct": false,
           "columns": [
             "provider_id",
             "service_name"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       }
     },
@@ -248,47 +241,32 @@
         "service_bookings_consumer_id_gig_consumers_id_fk": {
           "name": "service_bookings_consumer_id_gig_consumers_id_fk",
           "tableFrom": "service_bookings",
+          "tableTo": "gig_consumers",
           "columnsFrom": [
             "consumer_id"
           ],
-          "tableTo": "gig_consumers",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         },
         "service_bookings_provider_service_id_provider_services_id_fk": {
           "name": "service_bookings_provider_service_id_provider_services_id_fk",
           "tableFrom": "service_bookings",
+          "tableTo": "provider_services",
           "columnsFrom": [
             "provider_service_id"
           ],
-          "tableTo": "provider_services",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "consumer_id_idx": {
-          "name": "consumer_id_idx",
-          "columns": [
-            "consumer_id"
-          ],
-          "nullsNotDistinct": false
-        },
-        "provider_service_id_idx": {
-          "name": "provider_service_id_idx",
-          "columns": [
-            "provider_service_id"
-          ],
-          "nullsNotDistinct": false
-        }
-      }
+      "uniqueConstraints": {}
     }
   },
   "enums": {
