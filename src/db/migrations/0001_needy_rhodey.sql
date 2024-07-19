@@ -36,7 +36,6 @@ CREATE TABLE IF NOT EXISTS "provider_services" (
 	"experience" varchar(255) NOT NULL,
 	"additional_info" varchar(255) NOT NULL,
 	"geo" geometry(point)[] NOT NULL,
-	CONSTRAINT "provider_id_idx" UNIQUE("provider_id"),
 	CONSTRAINT "provider_services_idx" UNIQUE("provider_id","service_name")
 );
 --> statement-breakpoint
@@ -49,9 +48,7 @@ CREATE TABLE IF NOT EXISTS "service_bookings" (
 	"booking_date" date NOT NULL,
 	"contract_start_date" date NOT NULL,
 	"contract_end_date" date NOT NULL,
-	"contract_duration" varchar(255) NOT NULL,
-	CONSTRAINT "consumer_id_idx" UNIQUE("consumer_id"),
-	CONSTRAINT "provider_service_id_idx" UNIQUE("provider_service_id")
+	"contract_duration" varchar(255) NOT NULL
 );
 --> statement-breakpoint
 DO $$ BEGIN
