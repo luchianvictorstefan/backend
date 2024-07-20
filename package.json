@@ -9,8 +9,7 @@
     "dev": "nodemon src/app.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:seed": "cross-env DB_SEEDING=true ts-node src/db/seed.ts",
-    "dbml:generate": "npx tsx dbml.ts"
+    "db:seed": "cross-env DB_SEEDING=true ts-node src/db/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +18,6 @@
     "@types/pg": "^8.11.6",
     "cross-env": "^7.0.3",
     "nodemon": "^3.1.4",
-    "drizzle-dbml-generator": "^0.7.0",
     "drizzle-kit": "0.22.3",
     "typescript": "^5.5.3"
   },

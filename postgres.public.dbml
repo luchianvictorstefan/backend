@@ -1,0 +1,61 @@
+Enum "booking_status" {
+	"accepted"
+	"refused"
+	"completed"
+}
+
+Enum "provider_service_enum" {
+	"walking_the_dog"
+}
+
+Table "gig_consumers" {
+ 	"id" integer  [primary key] 
+ 	"user_id" integer   
+ 	"address" varchar(255)  
+ 	"description" varchar(255)  
+ 	"contact_number" varchar(255)  
+ } 
+ 
+ Table "gig_providers" {
+ 	"id" integer  [primary key] 
+ 	"user_id" integer   
+ 	"description" varchar(255)  
+ 	"contact_number" varchar(255)  
+ } 
+ 
+ Table "provider_services" {
+ 	"id" integer  [primary key] 
+ 	"provider_id" integer   
+ 	"rating" integer   
+ 	"service_name" provider_service_enum   
+ 	"availability" varchar(255)  
+ 	"experience" varchar(255)  
+ 	"additional_info" varchar(255)  
+ 	"geo" ARRAY   
+ } 
+ 
+ Table "service_bookings" {
+ 	"id" integer  [primary key] 
+ 	"consumer_id" integer   
+ 	"provider_service_id" integer   
+ 	"geo" geometry   
+ 	"status" booking_status   
+ 	"booking_date" date   
+ 	"contract_start_date" date   
+ 	"contract_end_date" date   
+ 	"contract_duration" varchar(255)  
+ } 
+ 
+ Table "spatial_ref_sys" {
+ 	"srid" integer  [primary key] 
+ 	"auth_name" varchar(256)  
+ 	"auth_srid" integer   
+ 	"srtext" varchar(2048)  
+ 	"proj4text" varchar(2048)  
+ } 
+ 
+ 
+Ref: "provider_services".provider_id > "gig_providers".id
+Ref: "service_bookings".provider_service_id > "provider_services".id
+Ref: "service_bookings".consumer_id > "gig_consumers".id 
+ 

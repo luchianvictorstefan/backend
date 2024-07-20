@@ -11,10 +11,10 @@ const serviceBookings = pgTable('service_bookings', {
   providerServiceId: integer('provider_service_id').notNull().references(() => providerServices.id),
   location: geometry('geo', { type: 'point', mode: "xy" }).notNull(),
   status: bookingStatusEnum('status').notNull(),
-  bookingDate: date('booking_date', { mode: 'date' }).notNull(),
-  contractStartDate: date('contract_start_date', { mode: 'date' }).notNull(),
-  contractEndDate: date('contract_end_date', { mode: 'date' }).notNull(),
-  contractDuration: varchar('contract_duration', { length: 255 }).notNull(),
+  bookingDate: date('booking_date', { mode: 'date' }),
+  contractStartDate: date('contract_start_date', { mode: 'date' }),
+  contractEndDate: date('contract_end_date', { mode: 'date' }),
+  contractDuration: varchar('contract_duration', { length: 255 }),
 });
 
 export const serviceBookingsRelations = relations(serviceBookings, ({one}) => ({
