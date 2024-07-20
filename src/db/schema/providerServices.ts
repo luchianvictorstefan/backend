@@ -13,7 +13,7 @@ const providerServices = pgTable('provider_services', {
   availability: varchar('availability', { length: 255 }),
   experience: varchar('experience', { length: 255 }),
   additionalInfo: varchar('additional_info', { length: 255 }),
-  locations: geometry('geo', { type: 'point', mode: "xy" }).array().notNull(),
+  locations: geometry('location', { type: 'point', mode: "xy" }).array().notNull(),
 },  table => ({
   providerServicesIdx: unique('provider_services_idx').on(table.providerId, table.serviceName)
 

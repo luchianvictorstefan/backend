@@ -15,6 +15,13 @@
       "when": 1721416946588,
       "tag": "0001_needy_rhodey",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1721471886556,
+      "tag": "0002_melted_beast",
+      "breakpoints": true
     }
   ]
 }

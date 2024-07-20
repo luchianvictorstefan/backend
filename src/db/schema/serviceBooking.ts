@@ -9,7 +9,7 @@ const serviceBookings = pgTable('service_bookings', {
   id: serial('id').primaryKey(),
   consumerId: integer('consumer_id').notNull().references(() => gigConsumers.id),
   providerServiceId: integer('provider_service_id').notNull().references(() => providerServices.id),
-  location: geometry('geo', { type: 'point', mode: "xy" }).notNull(),
+  location: geometry('location', { type: 'point', mode: "xy" }).notNull(),
   status: bookingStatusEnum('status').notNull(),
   bookingDate: date('booking_date', { mode: 'date' }),
   contractStartDate: date('contract_start_date', { mode: 'date' }),
